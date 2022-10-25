@@ -17,10 +17,11 @@ function ToDoList() {
   const { user } = useContext(userContext);
   const [loading, setLoading] = useState(true);
 
-  const onDelete = async ({ taskId }) => {
-    await deleteTaskService({ taskId, user });
-    const newTasks = tasks.filter((task) => task._id !== taskId);
-    setTasks([...newTasks]);
+  const onDelete = ({ taskId }) => {
+    deleteTaskService({ taskId, user });
+    setTasks((tasks) => {
+      return tasks?.filter((task) => task._id !== taskId)
+    });
   };
 
   const onCreateTask = ({ section, inputValue }) => {
@@ -32,17 +33,17 @@ function ToDoList() {
   const onEditTask = ({ id, status, inputValue }) => {
     return editTaskService({ id, status, user, inputValue }).then(
       (response) => {
-        let editedTask = tasks.find((task) => task._id === response.data._id);
+        let editedTask = tasks?.find((task) => task._id === response.data._id);
         editedTask = response.data;
-        setTasks([...tasks.filter((task) => task._id !== id), editedTask]);
+        setTasks([...tasks?.filter((task) => task._id !== id), editedTask]);
       }
     );
   };
 
   const onDropTask = ({ taskId, section }) => {
-    let droppedTask = tasks.find((task) => task._id === taskId);
+    let droppedTask = tasks?.find((task) => task._id === taskId);
     droppedTask.status = section;
-    setTasks([...tasks.filter((task) => task._id !== taskId), droppedTask]);
+    setTasks([...tasks?.filter((task) => task._id !== taskId), droppedTask]);
     editTaskService({ id: taskId, status: section, user });
   };
 
@@ -50,6 +51,7 @@ function ToDoList() {
     setTasks([]);
     if (user) {
       getTasks({ user }).then((response) => {
+
         setTasks(response.data);
         setLoading(false);
       });
@@ -76,7 +78,7 @@ function ToDoList() {
             h="100%"
           >
             {tasks &&
-              sections.map((section) => {
+              sections?.map((section) => {
                 const taskBySection = tasks.filter(
                   (task) => task.status === section
                 );

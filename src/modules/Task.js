@@ -67,10 +67,9 @@ function Task({
 
   useEffect(() => {
     setSectionsToMove(
-      sections &&
-        sections.filter((sectionsValue) => sectionsValue !== sectionSelected)
+      sections?.filter((sectionsValue) => sectionsValue !== sectionSelected)
     );
-  }, []);
+  }, [sections, sectionSelected]);
 
   return (
     <Flex
