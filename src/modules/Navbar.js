@@ -20,10 +20,10 @@ function Navbar() {
 
   return (
     <Flex
-      h={"50px"}
+      h={{ base: "80px", md: "50px" }}
       alignItems={"center"}
       justifyContent={"space-between"}
-      padding="30px 10px"
+      padding="40px 10px"
       bg="#0078D7"
       w="100vw"
     >

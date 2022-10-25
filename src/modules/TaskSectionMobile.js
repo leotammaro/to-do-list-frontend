@@ -23,11 +23,12 @@ function TaskSectionMobile({
   return (
     <Flex
       bg="#EBECF0"
-      w={"90vw"}
+      w={"100vw"}
       borderRadius={5}
       display={{ base: "flex", lg: "none" }}
       direction={"column"}
-      minH={300}
+      minH={10}
+      h="100%"
       justifyContent={"space-between"}
     >
       <Flex justifyContent={"space-around"} padding={5}>
@@ -36,7 +37,7 @@ function TaskSectionMobile({
             textDecoration={sectionSelected === section && "underline"}
             key={index}
             onClick={() => setSectionSelected(section)}
-            opacity={sectionSelected === section ? 1 : 0.1}
+            opacity={sectionSelected === section ? 1 : 0.4}
           >
             {section}
           </Text>

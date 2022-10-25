@@ -1,6 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import React, { useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useContext, useState, useEffect } from "react";
 import { userContext } from "../context/userContext";
 import {
   createTask,
@@ -60,17 +59,22 @@ function ToDoList() {
   return (
     <Flex
       fontSize={20}
-      justifyContent={{ base: "center", lg: "space-around" }}
-      marginTop={5}
-      w="80vw"
+      marginTop={{ base: 0, lg: 5 }}
+      w={"100vw"}
       gap={6}
       direction={{ base: "column", lg: "row" }}
-      alignItems={{ base: "center", lg: "flex-start" }}
-      h="80vh"
+      justifyContent="center"
+      flex={{ base: 1, lg: 0 }}
     >
       {user ? (
         <>
-          <Box display={{ base: "none", lg: "flex" }} gap={6} w={"100%"}>
+          <Flex
+            display={{ base: "none", lg: "flex" }}
+            gap={6}
+            w={"100%"}
+            justifyContent="center"
+            h="100%"
+          >
             {tasks &&
               sections.map((section) => {
                 const taskBySection = tasks.filter(
@@ -89,7 +93,7 @@ function ToDoList() {
                   />
                 );
               })}
-          </Box>
+          </Flex>
           <TaskSectionMobile
             sections={sections}
             tasks={tasks}

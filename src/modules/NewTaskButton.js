@@ -39,16 +39,18 @@ function NewTaskButton({ onCreateTask, section }) {
           alignItems={"center"}
           gap={4}
           _hover={{ bg: "#E8E8E8", cursor: "pointer" }}
-          w="100%"
-          padding={2}
-          borderRadius={"5px"}
+          bg={{ base: "#C6C6C6", lg: "none" }}
+          w={{ base: "", lg: "100%" }}
+          padding={3}
+          marginBottom={{ base: 3, lg: "none" }}
+          borderRadius={{ base: 5, lg: "none" }}
           onClick={() => {
             refInput.current.focus();
           }}
           justifyContent={{ base: "center", lg: "flex-start" }}
         >
           <Image src={plus} h={5} w={5} opacity={"0.5"} />
-          <Text fontSize={18} color={"gray.600"}>
+          <Text fontSize={18} color={"gray.500"}>
             New task
           </Text>
         </Flex>

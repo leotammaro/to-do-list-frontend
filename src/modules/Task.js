@@ -78,19 +78,19 @@ function Task({
       ref={dragRef}
       bg={"#fff"}
       w="100%"
-      padding={2}
       marginBottom={2}
       borderRadius={"5px"}
       boxShadow={"0 1px 0 #091e4240"}
       alignItems={"center"}
       justifyContent={"space-between"}
-      h={12}
+      minH={12}
       onMouseEnter={() => {
         setShowIcons(true);
       }}
       onMouseLeave={() => {
         setShowIcons(false);
       }}
+      paddingRight={3}
     >
       {editing ? (
         <Flex flex={1} justifyContent={"space-between"}>
@@ -109,7 +109,14 @@ function Task({
         </Flex>
       ) : (
         <>
-          <Text color={"#000"} fontSize={16}>
+          <Text
+            color={"#000"}
+            fontSize={{ base: 12, lg: 16 }}
+            textAlign="left"
+            maxW={{ base: 400, xl: 290 }}
+            wordBreak={"break-all"}
+            paddingLeft={5}
+          >
             {taskData.content}
           </Text>
 
@@ -118,6 +125,7 @@ function Task({
             alignItems={"center"}
             borderRadius={"3px"}
             gap={3}
+            padding={{ base: 3, md: 0 }}
           >
             <Image
               src={edit}

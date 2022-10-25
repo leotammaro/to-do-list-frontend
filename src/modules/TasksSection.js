@@ -31,17 +31,17 @@ function TasksSection({
     <Flex
       ref={drop}
       bg={isOver ? "#EBECF6" : "#EBECF0"}
-      w="100%"
+      minW={{ base: "", md: 200, lg: 320, xl: 400 }}
       minH={{ base: "", lg: 150 }}
       borderRadius={"5px"}
       direction={"column"}
-      alignItems={isLoading ? "center" : { base: "center", lg: "flex-start" }}
+      alignItems="center"
       gap={3}
-      padding={3}
-      h={tasks && tasks.length === 0 ? 120 : "100%"}
+      padding={{ base: 0, lg: 3 }}
+      h={{ base: "100%", md: tasks && tasks.length === 0 ? 120 : "100%" }}
       justifyContent={{ base: "space-between" }}
     >
-      <Box w="100%">
+      <Flex w="100%" direction={"column"} alignItems="center" padding={2}>
         <Text
           fontWeight={"600"}
           marginLeft={2}
@@ -70,7 +70,7 @@ function TasksSection({
             );
           })
         )}
-      </Box>
+      </Flex>
       <NewTaskButton onCreateTask={onCreateTask} section={section} />
     </Flex>
   );
